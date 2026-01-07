@@ -24,4 +24,18 @@ public class WinningLotto {
         int bonus = Integer.parseInt(bonusNumber);
         return new WinningLotto(numList, bonus);
     }
+
+    public Rank checkLotto(Lotto lotto) {
+        int count = 0;
+        boolean bonus = false;
+        for (int lottoNum : lotto.getNumbers()) {
+            if (numbers.contains(lottoNum)) {
+                count++;
+            }
+            if (lottoNum == bonusNumber){
+                bonus = true;
+            }
+        }
+        return Rank.fromWinning(count, bonus);
+    }
 }

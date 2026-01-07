@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.model.LottoResult;
 import lotto.model.Lottos;
 import lotto.model.PurchaseInfo;
 import lotto.model.WinningLotto;
@@ -32,6 +33,10 @@ public class Controller {
 
         // 당첨 번호 설정
         WinningLotto winningLotto = loopWiningLotto();
+
+        // 당첨 결과 생성
+        LottoResult lottoResult = lottoService.checkResult(lottos, winningLotto);
+        outputView.printLottoResult(lottoResult);
     }
 
     public String loopPrice(){

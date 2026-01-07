@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.model.LottoPurchase;
 import lotto.service.Validator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -17,6 +18,7 @@ public class Controller {
 
     public void run() {
         String purchasePrice = loopPrice();
+        LottoPurchase lottoPurchase = LottoPurchase.priceOf(purchasePrice);
     }
 
     public String loopPrice(){

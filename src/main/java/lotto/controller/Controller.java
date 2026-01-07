@@ -25,6 +25,7 @@ public class Controller {
         PurchaseInfo purchaseInfo = PurchaseInfo.priceOf(purchasePrice);
 
         Lottos lottos = lottoService.purchaseLotto(purchaseInfo);
+        outputView.printPurchaseLotto(lottos);
     }
 
     public String loopPrice(){

@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.StringJoiner;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -40,6 +41,19 @@ public class Lotto {
     public static Lotto generateLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return new Lotto(numbers);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    @Override
+    public String toString() {
+        StringJoiner stringJoiner = new StringJoiner(", ", "[", "]");
+        for (Integer number : numbers) {
+            stringJoiner.add(number + "");
+        }
+        return stringJoiner.toString();
     }
 
     // TODO: 추가 기능 구현

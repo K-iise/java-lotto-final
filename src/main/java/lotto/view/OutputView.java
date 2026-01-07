@@ -1,5 +1,6 @@
 package lotto.view;
 
+import java.text.DecimalFormat;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.StringJoiner;
@@ -9,6 +10,8 @@ import lotto.model.Lottos;
 import lotto.model.Rank;
 
 public class OutputView {
+
+    private DecimalFormat df = new DecimalFormat("(###,###원)");
 
     public void printErrorMessage(String message) {
         System.out.println(message);
@@ -31,8 +34,11 @@ public class OutputView {
         EnumMap<Rank, Integer> enumMap = lottoResult.getResultMap();
 
         for (Rank rank : Rank.values()) {
-            System.out.println(rank.getCount() + "개 일치 ");
-            System.out.println(rank.getPrice() + " - ");
+            if (rank == Rank.MISS)
+                continue;
+
+            System.out.print(rank.getCount() + "개 일치 ");
+            System.out.print(df.format(rank.getPrice()) + " - ");
             System.out.println(enumMap.get(rank) + "개");
         }
     }

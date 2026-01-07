@@ -36,7 +36,7 @@ public class Controller {
 
         // 당첨 결과 생성
         LottoResult lottoResult = lottoService.checkResult(lottos, winningLotto);
-        outputView.printLottoResult(lottoResult);
+        outputView.printLottoResult(lottoResult, purchaseInfo);
     }
 
     public String loopPrice(){

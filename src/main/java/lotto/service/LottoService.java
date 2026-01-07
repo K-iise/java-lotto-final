@@ -23,11 +23,12 @@ public class LottoService {
     public LottoResult checkResult(Lottos lottos, WinningLotto winningLotto) {
 
         EnumMap<Rank, Integer> rankMap = new EnumMap<>(Rank.class);
-
+        int profit = 0;
         for (Lotto lotto : lottos.getLottoList()) {
             Rank rank = winningLotto.checkLotto(lotto);
+            profit += rank.getPrice();
             rankMap.put(rank, rankMap.getOrDefault(rank , 0) + 1);
         }
-        return new LottoResult(rankMap);
+        return new LottoResult(rankMap, profit);
     }
 }

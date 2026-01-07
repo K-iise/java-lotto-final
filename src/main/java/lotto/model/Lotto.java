@@ -1,6 +1,7 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -15,8 +16,9 @@ public class Lotto {
         validate(numbers);
         validateRange(numbers);
         validateDuplication(numbers);
-        Collections.sort(numbers);
-        this.numbers = numbers;
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
+        this.numbers = sortedNumbers;
     }
 
     private void validate(List<Integer> numbers) {
@@ -34,8 +36,7 @@ public class Lotto {
     }
 
     private void validateDuplication(List<Integer> numbers) {
-        Set<Integer> fake = new HashSet<>();
-        fake.addAll(numbers);
+        Set<Integer> fake = new HashSet<>(numbers);
         if (fake.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
         }
